@@ -76,3 +76,19 @@ Route::view('/hello', 'hello', ['nome' => 'Gandalf']);
 Route::get('/hello/{nome}', function($nome){
     return view('hello', ['nome' => $nome]);
 });
+
+/* 6) Nomeando rotas */
+
+Route::get('/produtos', function(){
+    echo "Listagem de produtos";
+
+})->name('products');
+
+Route::get('/linkprodutos', function(){
+    $url = route('products');
+    echo "<a href=\"". $url . "\"> Meus produtos</a>";
+});
+
+Route::get('/redirecionarprodutos', function(){
+    return redirect()->route('products');
+});
